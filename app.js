@@ -586,10 +586,11 @@ function renderResult() {
     (my && w ? '<p class="mut">' + (my === w ? 'അഭിനന്ദനങ്ങൾ! നിങ്ങളുടെ ടീം ജയിച്ചു.' : 'നല്ല കളി! അടുത്ത തവണ ജയിക്കാം.') + '</p>' : '') +
     '<div class="score fin"><div class="sc A"><span>' + esc(tn('A')) + '</span><b>' + g.score.A + '</b></div><div class="mid">–</div><div class="sc B"><b>' + g.score.B + '</b><span>' + esc(tn('B')) + '</span></div></div>' +
     (g.stage !== 'reg' ? '<p class="mut">പെനാൽറ്റി: ' + pa + ' – ' + pb + '</p>' : '') + '</div>';
+  h += academyAd();
   var sc = Object.keys(g.goals).filter(function (id) { return g.goals[id] > 0; }).sort(function (a, b) { return g.goals[b] - g.goals[a]; });
   h += '<div class="card"><h3>⚽ ഗോൾ നേടിയവർ</h3>' + (sc.length ? sc.map(function (id) { return '<div class="pl"><span>' + esc(nm(id)) + ' · ' + esc(tn(E.teamOf(r, id))) + '</span><b>' + g.goals[id] + '</b></div>'; }).join('') : '<p class="mut">ആരും ഗോൾ നേടിയില്ല</p>') +
     '<p class="small">സെൽഫ് ഗോൾ: ' + g.log.filter(function (l) { return l.r === 'self'; }).length + ' · ഗോൾ ഇല്ലാത്ത ചോദ്യം: ' + g.log.filter(function (l) { return l.r === 'none'; }).length + '</p></div>';
-  h += reviewHtml(r) + academyAd();
+  h += reviewHtml(r);
   if (S.solo) h += '<button class="btn" data-act="solo">🔁 വീണ്ടും സോളോ (പുതിയ ചോദ്യങ്ങൾ)</button>';
   else if (admin) h += '<button class="btn" data-act="reset">🔁 വീണ്ടും കളിക്കാം (ലോബിയിലേക്ക്)</button>';
   else h += '<div class="card wait">ഹോസ്റ്റ് പുതിയ കളി തുടങ്ങാൻ കാത്തിരിക്കുക</div>';
